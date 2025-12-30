@@ -55,7 +55,7 @@ namespace AIMLTGBot
             recognizedClass = (FigureType)10;
             for (int i = 0; i < Output.Length; ++i)
             {
-                double outp = (int)recognizedClass == 10 ? 0.2: Output[(int)recognizedClass]; 
+                double outp = (int)recognizedClass == 10 ? 0.1: Output[(int)recognizedClass]; 
                 if (Output[i] > outp) recognizedClass = (FigureType) i;
             }
 

@@ -64,23 +64,32 @@ namespace AIMLTGBot
                 Telegram.Bot.Types.File fl = await client.GetFileAsync(photoId, cancellationToken: cancellationToken);
                 var imageStream = new MemoryStream();
                 await client.DownloadFileAsync(fl.FilePath, imageStream, cancellationToken: cancellationToken);
-				using (var bitmap = new Bitmap(imageStream))
-				{
-					imageProcessor.ProcessImage(bitmap);
+                try
+                {
+					using (var bitmap = new Bitmap(imageStream))
+					{
+						imageProcessor.ProcessImage(bitmap);
 
-                    var result = imageProcessor.result;
-					string answer = aiml.Talk(chatId, username, result.ToString());
-					if (answer != null && answer.Trim() != "")
-						// Echo received message text
-						await botClient.SendTextMessageAsync(
-							chatId: chatId,
-							text: answer,
-							cancellationToken: cancellationToken);
-					//await botClient.SendTextMessageAsync(
-					//	chatId: chatId,
-					//	text: $"{result.ToString()}",
-					//	cancellationToken: cancellationToken
-					//);
+						var result = imageProcessor.result;
+						string answer = aiml.Talk(chatId, username, result.ToString());
+						if (answer != null && answer.Trim() != "")
+							// Echo received message text
+							await botClient.SendTextMessageAsync(
+								chatId: chatId,
+								text: answer,
+								cancellationToken: cancellationToken);
+						//await botClient.SendTextMessageAsync(
+						//	chatId: chatId,
+						//	text: $"{result.ToString()}",
+						//	cancellationToken: cancellationToken
+						//);
+					}
+				}
+                catch {
+					await botClient.SendTextMessageAsync(
+									chatId: chatId,
+									text: "Произошла ошибка при обработке изображения",
+									cancellationToken: cancellationToken);
 				}
 				return;
             }

@@ -50,6 +50,53 @@
       </random>
     </template>
   </category>
+
+	<category>
+		<pattern>ЗДРАВСТВУЙ *</pattern>
+		<template>
+			<srai>ЗДРАВСТВУЙ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>ЗДРАВСТВУЙ</pattern>
+		<template>
+			<srai>ПРИВЕТ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>ЗДРАВСТВУЙТЕ *</pattern>
+		<template>
+			<srai>ЗДРАВСТВУЙТЕ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>ЗДРАВСТВУЙТЕ</pattern>
+		<template>
+			<srai>ПРИВЕТ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>ПРИВЕТ *</pattern>
+		<template>
+			<srai>ПРИВЕТ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>ПРИВЕТ</pattern>
+		<template>
+			<random>
+				<li>
+					Здравствуйте, <get name="user-name"></get>!
+				</li>
+				<li>
+					Добро пожаловать, <get name="user-name"></get>!
+				</li>
+				<li>
+					Привет, <get name="user-name"></get>!
+				</li>
+			</random>
+		</template>
+	</category>
   
   <category>
     <pattern>_ О СЕБЕ</pattern>
@@ -66,6 +113,26 @@
 	</category>
 
 	<category>
+		<pattern>КТО ТЫ *</pattern>
+		<template>
+			<srai>КТО ТЫ</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ КТО ТЫ</pattern>
+		<template>
+			<srai>КТО ТЫ</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ КТО ТЫ *</pattern>
+		<template>
+			<srai>КТО ТЫ</srai>
+		</template>
+	</category>
+	<category>
 		<pattern>КТО ТЫ</pattern>
 		<template>
 			<srai>START</srai>
@@ -73,12 +140,33 @@
 	</category>
 
 	<category>
-		<pattern>* ТЫ КТО *</pattern>
+		<pattern>ТЫ КТО *</pattern>
+		<template>
+			<srai>ТЫ КТО</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ ТЫ КТО</pattern>
+		<template>
+			<srai>ТЫ КТО</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ ТЫ КТО *</pattern>
+		<template>
+			<srai>ТЫ КТО</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>ТЫ КТО</pattern>
 		<template>
 			<srai>START</srai>
 		</template>
 	</category>
 
+	
 
 
   <category>
@@ -131,9 +219,8 @@
 	<category>
 		<pattern>AUDI</pattern>
 		<template>
-			<think> 
-				<set name="car_type">Audi</set>
-			</think>
+			Распознано: <set name="car_type">Audi</set>.
+
 			<srai>TELL FACT</srai>
 		</template>
 	</category>
@@ -159,9 +246,8 @@
 	<category>
 		<pattern>CITROEN</pattern>
 		<template>
-			<think> 
-				<set name="car_type">Citroen</set>
-			</think>
+			Распознано: <set name="car_type">Citroen</set>.
+			
 			<srai>TELL FACT</srai>
 
 		</template>
@@ -188,9 +274,8 @@
 	<category>
 		<pattern>FORD</pattern>
 		<template>
-			<think> 
-				<set name="car_type"> Ford </set>
-			</think>
+			Распознано: <set name="car_type">Ford</set>.
+
 			<srai>TELL FACT</srai>
 
 		</template>
@@ -217,9 +302,8 @@
 	<category>
 		<pattern>HYUNDAI</pattern>
 		<template>
-			<think> 
-				<set name="car_type">Hyundai </set>
-			</think>
+			Распознано: <set name="car_type">Hyundai</set>.
+
 			<srai>TELL FACT</srai>
 
 		</template>
@@ -246,10 +330,8 @@
 	<category>
 		<pattern>INFINITI</pattern>
 		<template>
-			<think> 
-				<set name="car_type"> Infiniti</set>
-			</think>
-			
+			Распознано: <set name="car_type">Infiniti</set>.
+
 			<srai>TELL FACT</srai>
 
 		</template>
@@ -276,9 +358,8 @@
 	<category>
 		<pattern>MERCEDES</pattern>
 		<template>
-			<think> 
-				<set name="car_type"> Mercedes </set>
-			</think>
+			Распознано: <set name="car_type">Mercedes</set>.
+			
 			<srai>TELL FACT</srai>
 
 		</template>
@@ -305,9 +386,8 @@
 	<category>
 		<pattern>MITSUBISHI</pattern>
 		<template>
-			<think> 
-				<set name="car_type">	Mitsubishi </set>
-			</think>
+			Распознано: <set name="car_type">Mitsubishi</set>.
+
 			<srai>TELL FACT</srai>
 
 		</template>
@@ -334,9 +414,8 @@
 	<category>
 		<pattern>OPEL</pattern>
 		<template>
-			<think> 
-				<set name="car_type"> Opel</set>
-			</think>
+			Распознано: <set name="car_type">Opel</set>.
+			
 			<srai>TELL FACT</srai>
 
 		</template>
@@ -363,9 +442,8 @@
 	<category>
 		<pattern>RENAULT</pattern>
 		<template>
-			<think> 
-				<set name="car_type"> Renault </set>
-			</think>
+			Распознано: <set name="car_type">Renault</set>.	
+			
 			<srai>TELL FACT</srai>
 
 		</template>
@@ -392,9 +470,8 @@
 	<category>
 		<pattern>TOYOTA</pattern>
 		<template>
-			<think> 
-				<set name="car_type"> Toyota </set>
-			</think>
+			Распознано: <set name="car_type">Toyota</set>.
+			
 			<srai>TELL FACT</srai>
 		</template>
 	</category>
@@ -469,6 +546,13 @@
 					Сначала скажите, какая марка вас интересует.
 				</li>
 			</condition>
+		</template>
+	</category>
+	
+	<category>
+		<pattern>UNDEFINED</pattern>
+		<template>
+			Не удалось распознать марку машины, попробуйте отправить другое фото.
 		</template>
 	</category>
 

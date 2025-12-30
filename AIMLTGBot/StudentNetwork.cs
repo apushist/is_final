@@ -18,7 +18,7 @@ namespace AIMLTGBot
 
 		public StudentNetwork()
 		{
-			using (var reader = new BinaryReader(File.Open(GetProjectRoot() + "\\networks\\studentNetF01.bin", FileMode.Open)))
+			using (var reader = new BinaryReader(File.Open(GetProjectRoot() + "\\networks\\studentNetF0.bin", FileMode.Open)))
 			{
 				int structureLength = reader.ReadInt32();
 				structure = new int[structureLength];

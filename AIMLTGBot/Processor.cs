@@ -9,78 +9,8 @@ using System.Drawing;
 
 namespace AIMLTGBot
 {
-    internal class Settings
-    {
-        private int _border = 20;
-        public int border
-        {
-            get
-            {
-                return _border;
-            }
-            set
-            {
-                if ((value > 0) && (value < height / 3))
-                {
-                    _border = value;
-                    if (top > 2 * _border) top = 2 * _border;
-                    if (left > 2 * _border) left = 2 * _border;
-                }
-            }
-        }
-
-        public int width = 640;
-        public int height = 640;
-
-        /// <summary>
-        /// Размер сетки для сенсоров по горизонтали
-        /// </summary>
-        public int blocksCount = 10;
-
-        /// <summary>
-        /// Желаемый размер изображения до обработки
-        /// </summary>
-        public Size orignalDesiredSize = new Size(500, 500);
-        /// <summary>
-        /// Желаемый размер изображения после обработки
-        /// </summary>
-        public Size processedDesiredSize = new Size(500, 500);
-
-        public int margin = 10;
-        public int top = 40;
-        public int left = 40;
-
-        /// <summary>
-        /// Второй этап обработки
-        /// </summary>
-        public bool processImg = false;
-
-        /// <summary>
-        /// Порог при отсечении по цвету 
-        /// </summary>
-        public byte threshold = 120;
-        public float differenceLim = 0.15f;
-
-        public void incTop() { if (top < 2 * _border) ++top; }
-        public void decTop() { if (top > 0) --top; }
-        public void incLeft() { if (left < 2 * _border) ++left; }
-        public void decLeft() { if (left > 0) --left; }
-
-
-
-	}
-
 	internal class MagicEye
     {
-        /// <summary>
-        /// Обработанное изображение
-        /// </summary>
-        public Bitmap processed;
-
-        /// <summary>
-        /// Класс настроек
-        /// </summary>
-        public Settings settings = new Settings();
 
         private StudentNetwork network;
 
@@ -190,13 +120,7 @@ namespace AIMLTGBot
         {
 			var grayFilter = new Grayscale(0.2125, 0.7154, 0.0721);
 			var uProcessed = grayFilter.Apply(UnmanagedImage.FromManagedImage(bitmap));
-
-			var scaleFilter = new ResizeBilinear(
-				settings.orignalDesiredSize.Width,
-				settings.orignalDesiredSize.Height
-			);
-			uProcessed = scaleFilter.Apply(uProcessed);
-
+            
 
             string info = processSample(ref uProcessed);
 
@@ -209,8 +133,6 @@ namespace AIMLTGBot
                 Console.WriteLine($"Распознано: {sample.recognizedClass}");
             }
 
-            processed = uProcessed.ToManagedImage();
-
             return true;
         }
 
@@ -218,17 +140,17 @@ namespace AIMLTGBot
         /// Обработка одного сэмпла
         /// </summary>
         /// <param name="index"></param>
-        private string processSample(ref AForge.Imaging.UnmanagedImage unmanaged)
+        private string processSample(ref UnmanagedImage unmanaged)
         {
             string rez = "Обработка";
 
             ///  Инвертируем изображение
-            AForge.Imaging.Filters.Invert InvertFilter = new AForge.Imaging.Filters.Invert();
+            Invert InvertFilter = new Invert();
             InvertFilter.ApplyInPlace(unmanaged);
 
             ///    Создаём BlobCounter, выдёргиваем самый большой кусок, масштабируем, пересечение и сохраняем
             ///    изображение в эксклюзивном использовании
-            AForge.Imaging.BlobCounterBase bc = new AForge.Imaging.BlobCounter();
+            BlobCounterBase bc = new BlobCounter();
 
             bc.FilterBlobs = true;
             bc.MinWidth = 3;
@@ -238,23 +160,27 @@ namespace AIMLTGBot
 
             // Обрабатываем картинку            
             bc.ProcessImage(unmanaged);
-
             Rectangle[] rects = bc.GetObjectsRectangles();
 
-            Rectangle biggestBlob = rects[0];
-            int padding = 10; 
-            int x = System.Math.Max(0, biggestBlob.X - padding);
-            int y = System.Math.Max(0, biggestBlob.Y - padding);
-            int width = System.Math.Min(unmanaged.Width - x, biggestBlob.Width + 2 * padding);
-            int height = System.Math.Min(unmanaged.Height - y, biggestBlob.Height + 2 * padding);
+			if (rects.Length == 0)
+			{
+				return "Blobs не найдены";
+			}
+
+			Rectangle biggestBlob = rects[0];
+            int padding = 100; 
+            int x = Math.Max(0, biggestBlob.X - padding);
+            int y = Math.Max(0, biggestBlob.Y - padding);
+            int width = Math.Min(unmanaged.Width - x, biggestBlob.Width + 2 * padding);
+            int height = Math.Min(unmanaged.Height - y, biggestBlob.Height + 2 * padding);
 
             // Обрезаем с небольшими отступами
-            AForge.Imaging.Filters.Crop cropFilter = new AForge.Imaging.Filters.Crop(new Rectangle(x, y, width, height));
-            //  Масштабируем до 100x100
-            AForge.Imaging.Filters.ResizeBilinear scaleFilter = new AForge.Imaging.Filters.ResizeBilinear(100, 100);
+            Crop cropFilter = new Crop(new Rectangle(x, y, width, height));
+			unmanaged = cropFilter.Apply(unmanaged);
+
+			//  Масштабируем до 100x100
+			ResizeBilinear scaleFilter = new ResizeBilinear(100, 100);
             unmanaged = scaleFilter.Apply(unmanaged);
-
-
 
             return rez;
         }

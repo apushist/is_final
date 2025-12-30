@@ -1,0 +1,684 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ACQUAINTANCE -->
+
+<aiml>
+	<category>
+		<pattern>START</pattern>
+		<template>
+			<li>
+			Я бот на основе AIML, я могу рассказать вам факты о следующих марках машин:
+		Audi, Citroen, Ford, Hyundai, Infiniti, Mercedes, Mitsubishi, Opel, Renault, Toyota.
+		О какой машине вы хотите поговорить?
+			</li>
+		</template>
+	</category>
+
+	<category>
+		<pattern>HELP</pattern>
+		<template>
+			<li>
+			Я могу рассказать вам факты о следующих марках машин:
+			Audi, Citroen, Ford, Hyundai, Infiniti, Mercedes, Mitsubishi, Opel, Renault, Toyota.
+			Попросите меня рассказать о какой-то машине!
+			</li>
+		</template>
+	</category>
+	
+	<category>
+		<pattern>RESTART</pattern>
+		<template>
+			<srai>START</srai>
+		</template>
+	</category>
+	
+  <category>
+    <pattern>_ меня зовут *</pattern>
+    <template>
+        <srai>меня зовут <star/></srai>
+    </template>
+  </category>
+  
+  <category>
+    <pattern>меня зовут *</pattern>
+    <template>
+      <random>
+        <li>Здравствуйте, <set name="user-name"><star /></set>!
+        </li>
+        <li>Добро пожаловать, <set name="user-name"><star /></set>!
+        </li>
+      </random>
+    </template>
+  </category>
+  
+  <category>
+    <pattern>_ О СЕБЕ</pattern>
+    <template>
+      <srai>START</srai>
+    </template>
+  </category>
+
+	<category>
+		<pattern>_ О СЕБЕ *</pattern>
+		<template>
+			<srai>START</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>КТО ТЫ</pattern>
+		<template>
+			<srai>START</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>* ТЫ КТО *</pattern>
+		<template>
+			<srai>START</srai>
+		</template>
+	</category>
+
+
+
+  <category>
+    <pattern>ЧТО ТЫ УМЕЕШЬ</pattern>
+    <template>
+		<srai>HELP</srai>
+	</template>
+  </category>
+
+	<category>
+		<pattern>ЧТО ТЫ УМЕЕШЬ *</pattern>
+		<template>
+			<srai>ЧТО ТЫ УМЕЕШЬ</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ ЧТО ТЫ УМЕЕШЬ</pattern>
+		<template>
+			<srai>ЧТО ТЫ УМЕЕШЬ</srai>
+		</template>
+	</category>
+	
+	<category>
+		<pattern>_ ЧТО ТЫ УМЕЕШЬ *</pattern>
+		<template>
+			<srai>ЧТО ТЫ УМЕЕШЬ</srai>
+		</template>
+	</category>
+
+	<!-- РАБОТА С МАШИНАМИ -->
+	<category>
+		<pattern>_ AUDI</pattern>
+		<template>
+			<srai>AUDI</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>AUDI *</pattern>
+		<template>
+			<srai>AUDI</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ AUDI *</pattern>
+		<template>
+			<srai>AUDI</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>AUDI</pattern>
+		<template>
+			<think> 
+				<set name="car_type">Audi</set>
+			</think>
+			<srai>TELL FACT</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ CITROEN</pattern>
+		<template>
+			<srai>CITROEN</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>CITROEN *</pattern>
+		<template>
+			<srai>CITROEN</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ CITROEN *</pattern>
+		<template>
+			<srai>CITROEN</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>CITROEN</pattern>
+		<template>
+			<think> 
+				<set name="car_type">Citroen</set>
+			</think>
+			<srai>TELL FACT</srai>
+
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ FORD</pattern>
+		<template>
+			<srai>FORD</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>FORD *</pattern>
+		<template>
+			<srai>FORD</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ FORD *</pattern>
+		<template>
+			<srai>FORD</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>FORD</pattern>
+		<template>
+			<think> 
+				<set name="car_type"> Ford </set>
+			</think>
+			<srai>TELL FACT</srai>
+
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ HYUNDAI</pattern>
+		<template>
+			<srai>HYUNDAI</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>HYUNDAI *</pattern>
+		<template>
+			<srai>HYUNDAI</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ HYUNDAI *</pattern>
+		<template>
+			<srai>HYUNDAI</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>HYUNDAI</pattern>
+		<template>
+			<think> 
+				<set name="car_type">Hyundai </set>
+			</think>
+			<srai>TELL FACT</srai>
+
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ INFINITI</pattern>
+		<template>
+			<srai>INFINITI</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>INFINITI *</pattern>
+		<template>
+			<srai>INFINITI</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ INFINITI *</pattern>
+		<template>
+			<srai>INFINITI</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>INFINITI</pattern>
+		<template>
+			<think> 
+				<set name="car_type"> Infiniti</set>
+			</think>
+			
+			<srai>TELL FACT</srai>
+
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ MERCEDES</pattern>
+		<template>
+			<srai>MERCEDES</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>MERCEDES *</pattern>
+		<template>
+			<srai>MERCEDES</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ MERCEDES *</pattern>
+		<template>
+			<srai>MERCEDES</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>MERCEDES</pattern>
+		<template>
+			<think> 
+				<set name="car_type"> Mercedes </set>
+			</think>
+			<srai>TELL FACT</srai>
+
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ MITSUBISHI</pattern>
+		<template>
+			<srai>MITSUBISHI</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>MITSUBISHI *</pattern>
+		<template>
+			<srai>MITSUBISHI</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ MITSUBISHI *</pattern>
+		<template>
+			<srai>MITSUBISHI</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>MITSUBISHI</pattern>
+		<template>
+			<think> 
+				<set name="car_type">	Mitsubishi </set>
+			</think>
+			<srai>TELL FACT</srai>
+
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ OPEL</pattern>
+		<template>
+			<srai>OPEL</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>OPEL *</pattern>
+		<template>
+			<srai>OPEL</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ OPEL *</pattern>
+		<template>
+			<srai>OPEL</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>OPEL</pattern>
+		<template>
+			<think> 
+				<set name="car_type"> Opel</set>
+			</think>
+			<srai>TELL FACT</srai>
+
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ RENAULT</pattern>
+		<template>
+			<srai>RENAULT</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>RENAULT *</pattern>
+		<template>
+			<srai>RENAULT</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ RENAULT *</pattern>
+		<template>
+			<srai>RENAULT</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>RENAULT</pattern>
+		<template>
+			<think> 
+				<set name="car_type"> Renault </set>
+			</think>
+			<srai>TELL FACT</srai>
+
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ TOYOTA</pattern>
+		<template>
+			<srai>TOYOTA</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>TOYOTA *</pattern>
+		<template>
+			<srai>TOYOTA</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ TOYOTA *</pattern>
+		<template>
+			<srai>TOYOTA</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>TOYOTA</pattern>
+		<template>
+			<think> 
+				<set name="car_type"> Toyota </set>
+			</think>
+			<srai>TELL FACT</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>TELL FACT</pattern>
+		<template>
+			<condition name="car_type">
+				<li value="Audi">
+					<random>
+						<li>Логотип Audi - четыре кольца - символизирует объединение четырех независимых автопроизводителей: Audi, DKW, Horch и Wanderer</li>
+						<li>Основатель компании Август Хорьх ранее основал компанию Horch (1899), но из-за споров с партнерами ушел и основал новую под названием Audi в 1910 году</li>
+					</random>
+				</li>
+				<li value="Citroen">
+					<random>
+						<li>Одним из знаковых изобретений Citroen является гидропневматическая подвеска, обеспечивающая исключительную плавность хода</li>
+						<li>Компания была основана во Франции в 1919 году Андре Ситроеном.</li>
+					</random>
+				</li>
+				<li value="Ford">
+					<random>
+						<li>Генри Форд произвел революцию в автомобильной промышленности, внедрив конвейерную сборку, что сделало автомобили доступными для широких масс.</li>
+						<li>Компания основана в Детройте в 1903 году Генри Фордом, который создал её, получив на развитие бизнеса 28 000 $ от пяти инвесторов. </li>
+					</random>
+				</li>
+				<li value="Hyundai">
+					<random>
+						<li>Hyundai - крупнейший автопроизводитель Южной Кореи и один из ведущих мировых концернов.</li>
+						<li>Компания основана в 1967 году Чон Чжу-ёном. В 1968 году начал работу первый завод по сборке автомобилей в Ульсане, начавший производство автомобилей Ford Cortina. В конце 1960-х и начале 1970-х годов компания занималась выпуском нескольких легковых и одной грузовой модели американского концерна Ford.</li>
+					</random>
+				</li>
+				<li value="Infiniti">
+					<random>
+						<li>Infiniti была основана Nissan в 1989 году в ответ на появление Lexus у Toyota как премиальное подразделение Nissan.</li>
+						<li>Логотип Infiniti представляет собой овальную форму с вершиной треугольника внутри, обозначающей дорогу, исчезающую в бесконечности. Символизирует постоянное движение вперёд, стремление к инновациям и новым достижениям.</li>
+					</random>
+				</li>
+				<li value="Mercedes">
+					<random>
+						<li>Пионер автомобилестроения: Карл Бенц запатентовал первый автомобиль с бензиновым двигателем в 1886 году</li>
+						<li>Компания образована в 1926 году от слияния BenzAndCie. и Daimler-Motoren-Gesellschaft.</li>
+					</random>
+				</li>
+				<li value="Mitsubishi">
+					<random>
+						<li>Логотип Mitsubishi означает "три бриллианта", символизируя три ценности: надежность, честность и успех.</li>
+						<li>Первая компания Mitsubishi была основана в 1870 году и к началу XX века разрослась в конгломерат, в который вошла и автомобильная промышленность. Mitsubishi Motors Corporation была основана в 1970 году как отдельное подразделение.</li>
+					</random>
+				</li>
+				<li value="Opel">
+					<random>
+						<li>Компания Opel была основана как производитель швейных машинок в 1862 году.</li>
+						<li>Логотип Opel в виде молнии символизирует скорость и динамику.</li>
+
+					</random>
+				</li>
+				<li value="Renault">
+					<random>
+						<li>Renault - один из крупнейших и старейших французских автопроизводителей, открыт в 1899 году.</li>
+						<li>Среднеразмерный Renault Laguna в июне 2001 года стал первым автомобилем, получившим 5 звезд по результатам краш-тестов EuroNCAP за защиту водителя и пассажиров как при фронтальном, так и при боковом ударах</li>
+					</random>
+				</li>
+				<li value="Toyota">
+					<random>
+						<li>Toyota стала первым в мире производителем автомобилей, который производил более 10 миллионов автомобилей в год, что стало рекордом, установленным в 2012 году, когда она сообщила о производстве своего 200-миллионного автомобиля.</li>
+						<li>Первый автомобиль марки «Тойота», произведённый за пределами Японии, вышел с конвейера в апреле 1963 года в городе Мельбурн, в Австралии.</li>
+						<li>Toyota Motor Corporation была основана в 1937 году как подразделение Toyota Group. Свою деятельность компания начинала с выпуска автоматических ткацких станков.</li>
+					</random>
+				</li>
+				<li>
+					Сначала скажите, какая марка вас интересует.
+				</li>
+			</condition>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ ЕЩЕ</pattern>
+		<template>
+			<srai>ЕЩЕ</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>ЕЩЕ *</pattern>
+		<template>
+			<srai>ЕЩЕ</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ ЕЩЕ *</pattern>
+		<template>
+			<srai>ЕЩЕ</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>ЕЩЕ</pattern>
+		<template>
+			<srai>TELL FACT</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ ПОДРОБНЕЕ</pattern>
+		<template>
+			<srai>ПОДРОБНЕЕ</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>ПОДРОБНЕЕ *</pattern>
+		<template>
+			<srai>ПОДРОБНЕЕ</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ ПОДРОБНЕЕ *</pattern>
+		<template>
+			<srai>ПОДРОБНЕЕ</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>ПОДРОБНЕЕ</pattern>
+		<template>
+			<srai>TELL FACT</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ О ЧЕМ МЫ</pattern>
+		<template>
+			<srai>О ЧЕМ МЫ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ О ЧЕМ * МЫ</pattern>
+		<template>
+			<srai>О ЧЕМ МЫ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>О ЧЕМ МЫ *</pattern>
+		<template>
+			<srai>О ЧЕМ МЫ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>О ЧЕМ * МЫ *</pattern>
+		<template>
+			<srai>О ЧЕМ МЫ</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ О ЧЕМ МЫ *</pattern>
+		<template>
+			<srai>О ЧЕМ МЫ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ О ЧЕМ * МЫ *</pattern>
+		<template>
+			<srai>О ЧЕМ МЫ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>О ЧЕМ МЫ</pattern>
+		<template>
+			Мы говорим об автомобильной марке <get name="car_type"></get>
+		</template>
+	</category>
+
+	
+	<category>
+		<pattern>О ЧЕМ РЕЧЬ</pattern>
+		<template>
+			<srai>О ЧЕМ МЫ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ О ЧЕМ РЕЧЬ</pattern>
+		<template>
+			<srai>О ЧЕМ РЕЧЬ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ О ЧЕМ * РЕЧЬ</pattern>
+		<template>
+			<srai>О ЧЕМ РЕЧЬ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>О ЧЕМ РЕЧЬ *</pattern>
+		<template>
+			<srai>О ЧЕМ РЕЧЬ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>О ЧЕМ * РЕЧЬ *</pattern>
+		<template>
+			<srai>О ЧЕМ РЕЧЬ</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ О ЧЕМ РЕЧЬ *</pattern>
+		<template>
+			<srai>О ЧЕМ РЕЧЬ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ О ЧЕМ * РЕЧЬ *</pattern>
+		<template>
+			<srai>О ЧЕМ РЕЧЬ</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>О ЧЕМ ТЫ</pattern>
+		<template>
+			<srai>О ЧЕМ МЫ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ О ЧЕМ ТЫ</pattern>
+		<template>
+			<srai>О ЧЕМ ТЫ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ О ЧЕМ * ТЫ</pattern>
+		<template>
+			<srai>О ЧЕМ ТЫ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>О ЧЕМ ТЫ *</pattern>
+		<template>
+			<srai>О ЧЕМ ТЫ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>О ЧЕМ * ТЫ *</pattern>
+		<template>
+			<srai>О ЧЕМ ТЫ</srai>
+		</template>
+	</category>
+
+	<category>
+		<pattern>_ О ЧЕМ ТЫ *</pattern>
+		<template>
+			<srai>О ЧЕМ ТЫ</srai>
+		</template>
+	</category>
+	<category>
+		<pattern>_ О ЧЕМ * ТЫ *</pattern>
+		<template>
+			<srai>О ЧЕМ ТЫ</srai>
+		</template>
+	</category>
+	
+	<!-- КОНЕЦ СЕКЦИИ: РАБОТА С МАШИНАМИ -->
+
+	<category>
+		<pattern>Аудио</pattern>
+		<template>Жаль, я не умею слушать</template>
+	</category>
+	  <category>
+		<pattern>Видео</pattern>
+		<template>Спасибо, но, кажется, у меня сломалась кнопка запуска</template>
+	  </category>
+  
+	  <category>
+		<pattern>*</pattern>
+		<template>
+			Я не знаю, как на это ответить.
+			<srai>HELP</srai>
+		</template>
+	  </category>
+
+	
+</aiml>
